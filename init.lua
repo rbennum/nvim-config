@@ -1,3 +1,8 @@
+-- disable netrw since we are going to install nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.mapleader = ' '
+
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 -- Auto install lazy.nvim if not present
@@ -21,10 +26,35 @@ require('lazy').setup({
   {'neovim/nvim-lspconfig'},
   {'hrsh7th/cmp-nvim-lsp'},
   {'hrsh7th/nvim-cmp'},
+  {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    config = function()
+      require('nvim-tree').setup({
+        view = {
+	  width = 30,
+	  side = 'left',
+	},
+	filters = {
+          dotfiles = false,
+	},
+	git = {
+          enable = true,
+	},
+      })
+    end
+  },
 })
 
 vim.opt.termguicolors = true
 vim.cmd.colorscheme('tokyonight')
+
+-- keymap for nvim-tree
+-- TODO: put it in a separate file
+vim.api.nvim_set_keymap('n', '<leader>tt', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
 
 ---
 -- LSP SETUP
@@ -65,6 +95,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- List of language servers installed in the system
 require('lspconfig').gopls.setup({})
+require('lspconfig').pyright.setup({})
 
 ---
 -- Autocompletion config
