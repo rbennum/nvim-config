@@ -2,6 +2,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = ' '
+vim.wo.relativenumber = true
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
@@ -26,6 +27,15 @@ require('lazy').setup({
   {'neovim/nvim-lspconfig'},
   {'hrsh7th/cmp-nvim-lsp'},
   {'hrsh7th/nvim-cmp'},
+  {
+    'nvim-lualine/lualine.nvim',
+    require = {
+      'nvim-tree/nvim-web-devicons', opt = true
+    },
+    config = function()
+      require('lualine').setup()
+    end
+  },
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
