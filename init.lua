@@ -28,6 +28,12 @@ require('lazy').setup({
   {'hrsh7th/cmp-nvim-lsp'},
   {'hrsh7th/nvim-cmp'},
   {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup()
+    end
+  },
+  {
     'nvim-lualine/lualine.nvim',
     require = {
       'nvim-tree/nvim-web-devicons', opt = true
