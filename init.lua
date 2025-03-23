@@ -28,6 +28,12 @@ require('lazy').setup({
   {'hrsh7th/cmp-nvim-lsp'},
   {'hrsh7th/nvim-cmp'},
   {
+    'pocco81/auto-save.nvim',
+    config = function()
+      require('auto-save').setup()
+    end
+  },
+  {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup()
