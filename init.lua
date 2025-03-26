@@ -2,12 +2,15 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = ' '
+
+require('config.lazy')
+
+vim.opt.shiftwidth = 4
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.signcolumn = 'yes'
 
-require('config.lazy')
 
 ---
 -- Autocompletion config
