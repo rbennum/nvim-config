@@ -9,11 +9,11 @@ local function get_python_path(workspace)
   return vim.fn.exepath('python3') or vim.fn.exepath('python') or 'python'
 end
 
-return require('lspconfig').pyright.setup({
+return {
   settings = {
     python = {
       pythonPath = get_python_path(vim.fn.getcwd()),
     }
   }
-})
+}
 
