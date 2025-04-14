@@ -13,7 +13,8 @@ return {
 
       require('lspconfig').gopls.setup({})
       require('lspconfig').lua_ls.setup({})
-      require('lspconfig').pyright.setup(python_lsp)
+      -- require('lspconfig').pyright.setup(python_lsp)
+      require('lspconfig').pyright.setup({})
 
       vim.api.nvim_create_autocmd('lspattach', {
         desc = 'lsp actions',
